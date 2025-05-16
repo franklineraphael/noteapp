@@ -268,17 +268,40 @@ function Menu() {
           </PopoverGroup>
           {/* </div>  */}
         </nav>
-      </header>
+     
 
-      <Dialog open={mobileMenuOpened} onClose={setMobileMenuOpened}>
-        <div className="flex lg:hidden">
-          <button onClick={() => setMobileMenuOpened(true)}>
-            menu is open
-          </button>
+      {/* mobile starts here  */}
+
+      <Dialog
+        open={mobileMenuOpened}
+        onClose={setMobileMenuOpened}
+        className="lg:hidden"
+      >
+        <div className="bg-white shadow-lg rounded border m-6 absolute top-2 w[94%] h-[100%]">
+          <img src="/logo.svg" className="p-8" alt="" />
+          <div className="p-4">
+            {links.map(item) => (
+              <div key={item.name}
+              className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                  <img src={item.icon} alt="" srcSet="" />
+                </div>
+                <div className="flex-auto">
+<a href={item.href} className="block font-semibold text-gray-900">
+  {item.name}
+  <span className="absolute inset-0"></span>
+</a>
+<p className="mt-1 text-gray-600 ">{item.Description}</p>
+                </div> 
+              </div>
+            )}
+
+          </div>
         </div>
       </Dialog>
+      </header>
     </div>
   );
-}
+};
 
 export default Menu;
